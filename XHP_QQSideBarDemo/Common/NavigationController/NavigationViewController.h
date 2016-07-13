@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  NavigationController.h
 //  XHP_QQSideBarDemo
 //
 //  Created by xiaohaiping on 16/7/11.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface NavigationViewController : UINavigationController
 
 @end
-
