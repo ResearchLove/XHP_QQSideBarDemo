@@ -8,6 +8,10 @@
 
 #import "CommonTableViewController.h"
 
+#define USERIMAGEWIDTH  35 
+
 @interface MessageViewController : CommonTableViewController
+
+@property (strong,nonatomic) UIImageView *userImageView;
 
 @end

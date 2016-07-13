@@ -7,7 +7,12 @@
 //
 
 #import "CommonTableViewCell.h"
+#import "SideBarMenuModel.h"
 
 @interface SideBarMenuCell : CommonTableViewCell
+
+@property (nonatomic,strong) UILabel *titleLabel;
+
+@property (strong,nonatomic) SideBarMenuModel *sidBarMenModel;
 
 @end

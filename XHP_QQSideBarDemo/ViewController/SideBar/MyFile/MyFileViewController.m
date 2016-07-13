@@ -7,6 +7,7 @@
 //
 
 #import "MyFileViewController.h"
+#import "NavigationBar.h"
 
 @interface MyFileViewController ()
 
@@ -16,9 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationItem setTitle:@"我的文件"];
+    [NavigationBar setNavigationLeftButton:self.navigationItem withTarget:self andSelector:@selector(backEvent:)];
     // Do any additional setup after loading the view.
 }
 
+
+-(void)backEvent:(UIButton *)button
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

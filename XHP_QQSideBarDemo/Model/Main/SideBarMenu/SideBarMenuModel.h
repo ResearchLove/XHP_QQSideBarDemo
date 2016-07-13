@@ -10,4 +10,9 @@
 
 @interface SideBarMenuModel : NSObject
 
+@property(strong,nonatomic) NSString *iconURL;
+@property(strong,nonatomic) NSString *title;
+
++(SideBarMenuModel *)CreateMenuItemWithIconPath:(NSString *)iconURL title:(NSString *)title;
+
 @end

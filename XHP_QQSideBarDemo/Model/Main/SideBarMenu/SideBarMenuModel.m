@@ -10,4 +10,12 @@
 
 @implementation SideBarMenuModel
 
++(SideBarMenuModel *)CreateMenuItemWithIconPath:(NSString *)iconURL title:(NSString *)title
+{
+    SideBarMenuModel *sideBarMenuModel = [[SideBarMenuModel alloc]init];
+    sideBarMenuModel.iconURL = iconURL;
+    sideBarMenuModel.title = title;
+    return sideBarMenuModel;
+}
+
 @end

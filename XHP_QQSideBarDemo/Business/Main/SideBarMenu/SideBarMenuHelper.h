@@ -10,4 +10,6 @@
 
 @interface SideBarMenuHelper : NSObject
 
+@property (strong,nonatomic) NSMutableArray *dataAry;
+
 @end

@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view setBackgroundColor:DEFAULT_BACKGROUND_COLOR];
+    [self setHidesBottomBarWhenPushed:YES];
     // Do any additional setup after loading the view.
 }
 

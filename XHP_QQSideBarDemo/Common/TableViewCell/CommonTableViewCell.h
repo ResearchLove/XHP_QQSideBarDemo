@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "UIView+Frame.h"
+
 typedef NS_ENUM(NSInteger,CellLineStyle){
     CellLineStyleDefault,  //默认
     CellLineStyleFill,     //填满

@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setHidesBottomBarWhenPushed:NO];
+    [self.navigationItem setTitle:@"联系人"];
     // Do any additional setup after loading the view.
 }
 

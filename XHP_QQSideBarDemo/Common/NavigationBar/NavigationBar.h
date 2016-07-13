@@ -10,4 +10,6 @@
 
 @interface NavigationBar : UINavigationBar
 
++ (UIButton *)setNavigationLeftButton:(UINavigationItem *)navigationItem withTarget:(id)target andSelector:(SEL)selector;
+
 @end

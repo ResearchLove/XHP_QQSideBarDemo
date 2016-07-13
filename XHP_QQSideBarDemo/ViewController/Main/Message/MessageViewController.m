@@ -16,8 +16,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setHidesBottomBarWhenPushed:NO];
+    [self.navigationItem setTitle:@"消息"];
+    
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.userImageView];
+    
+    
     // Do any additional setup after loading the view.
 }
+
+/**
+ *  Getter and Setter
+ *
+ */
+-(UIImageView *)userImageView
+{
+    if (_userImageView == nil) {
+        _userImageView = [[UIImageView alloc]init];
+        [_userImageView setFrame:CGRectMake(0,0,USERIMAGEWIDTH,USERIMAGEWIDTH)];
+        [_userImageView setImage:[UIImage imageNamed:@"me"]];
+        [_userImageView.layer setMasksToBounds:YES];
+        [_userImageView.layer setCornerRadius:USERIMAGEWIDTH / 2];
+    }
+    return _userImageView;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

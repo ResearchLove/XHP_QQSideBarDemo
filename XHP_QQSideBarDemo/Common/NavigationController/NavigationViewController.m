@@ -16,7 +16,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNavigationBarStyle];
     // Do any additional setup after loading the view.
+}
+
+-(void)setNavigationBarStyle
+{
+    [self.navigationBar setBackgroundImage:[[NavigationViewController CreateImageWithColor:NavigaionBackgroundColor] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 1, 5, 1)] forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.tintColor = [UIColor whiteColor];
+     self.navigationBar.barStyle = UIBarStyleBlack;
+
+
+}
+
++ (UIImage *)CreateImageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
+
 }
 
 - (void)didReceiveMemoryWarning {
