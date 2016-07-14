@@ -36,6 +36,8 @@ static const CGFloat menuStartNarrowRatio  = 0.70;
 @property (assign,nonatomic) CGFloat menuCenterEndX;   // menu缩放结束中点的X
 @property (assign,nonatomic) CGFloat panStartX;        // 拖动开始的X值
 
+@property (strong,nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
+
 @end
 
 @implementation RootViewController
@@ -58,8 +60,9 @@ static const CGFloat menuStartNarrowRatio  = 0.70;
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGestureRecognizerEvent:)];
     [self.rootTabBarController.view addGestureRecognizer:panGestureRecognizer];
     
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureRecognizerEvent:)];
-    [self.rootTabBarController.view addGestureRecognizer:tapGestureRecognizer];
+    _tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureRecognizerEvent:)];
+    _tapGestureRecognizer.enabled = NO;
+    [self.rootTabBarController.view addGestureRecognizer:_tapGestureRecognizer];
     
     UITapGestureRecognizer *userImageTopGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userImageTopGestureRecognizerEvent:)];
     [self.rootTabBarController.messageVC.userImageView addGestureRecognizer:userImageTopGestureRecognizer];
@@ -151,6 +154,7 @@ static const CGFloat menuStartNarrowRatio  = 0.70;
  */
 -(void)showSideBarMenu
 {
+    _tapGestureRecognizer.enabled = YES;   //打开手势
     self.distance =  self.leftDistance;
     self.state = StateMenu;
     [self doSlide:viewHeightNarrowRatio];
@@ -161,6 +165,7 @@ static const CGFloat menuStartNarrowRatio  = 0.70;
  */
 -(void)showHome
 {
+    _tapGestureRecognizer.enabled = NO;  //禁用手势
     self.distance = 0;
     self.state = StateHome;
     [self doSlide:1];
@@ -176,8 +181,7 @@ static const CGFloat menuStartNarrowRatio  = 0.70;
     [UIView animateWithDuration:0.3 animations:^{
         self.rootTabBarController.view.center = CGPointMake(self.view.center.x + self.distance, self.view.center.y);
         self.rootTabBarController.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, proportion, proportion);
-        
-       self.rootTabBarController.messageVC.userImageView.alpha =  self.coverView.alpha = proportion == 1 ? 1 : 0;
+        self.rootTabBarController.messageVC.userImageView.alpha =  self.coverView.alpha = proportion == 1 ? 1 : 0;
         CGFloat menuCenterX;
         CGFloat menuProportion;
         
